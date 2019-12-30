@@ -21,9 +21,15 @@ $font-e2: "Mansalva", cursive;
   font-weight: bold;
   font-size: 1.3rem;
   text-align: center;
-
+}
 
 /*-------------- レイアウト ----------------*/
+
+//疑似要素初期化
+@mixin icon-ini {
+  content: "";
+  display: inline-block;
+}
 
 // 親要素に対して中央寄せ
 // *引数($dierction)に x, y, xy いずれかを与える(x：横方向中央寄せ y：縦方向中央寄せ xy：縦横方向中央寄せ)
@@ -118,7 +124,7 @@ $font-e2: "Mansalva", cursive;
   margin: 0 auto;
   &:hover {
     color: $main-color1;
-    background: $white-color;
+    background: white;
     border: 1px solid $main-color1;
   }
 }
@@ -144,6 +150,7 @@ $font-e2: "Mansalva", cursive;
   }
 }
 
+// aタグがあるボタン
 @mixin btn-3 {
   letter-spacing: 1px;
   font-weight: bold;
@@ -173,9 +180,28 @@ $breakpoints: (
   "pcl": "screen and (max-width: 2000px)"
 ) !default;
 
-// デフォルトではmd,設定したい場合は、@include mq(sm) と記述。大きい順に記述すること
-@mixin mq($breakpoint: md) {
+// デフォルトではmd,設定したい場合は、@include mq(sp) と記述。大きい順に記述すること
+@mixin mq($breakpoint: sp) {
   @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+/*-------------- メディアクエリ2 ----------------*/
+// * ex)
+//   @include media-sp {}
+//   @include media-pc {}
+// ----
+$break-point: 767px;
+
+@mixin media-sp {
+  @media screen and (max-width: $break-point) {
+    @content;
+  }
+}
+
+@mixin media-pc {
+  @media print, screen and (min-width: $break-point + 1) {
     @content;
   }
 }
@@ -185,7 +211,7 @@ $breakpoints: (
 // login.bladeなどに搭載のポリシー等の記述
 @mixin policy($width, $padding) {
   width: $width;
-  background: $base-color3;
+  background-color: $base-color3;
   color: $base-color1;
   line-height: 1.25rem;
   font-size: 0.8rem;
