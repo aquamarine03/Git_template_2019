@@ -1,15 +1,36 @@
+@charset "UTF-8";
+@import "reset";
 @import "base";
 
-body {
-  @include mq(pcl) {
-    color: black;
-  }
+/* --------------------------------
+ * base
+ * -------------------------------- */
+html {
+  font-size: 62.5%;
+}
 
-  @include mq(sp) {
+body {
+  color: #333;
+  font-size: 1.2rem;
+  line-height: 2;
+  font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  @include media-pc {
+    color: #000;
+  }
+  @include media-sp {
     color: blue;
   }
 }
 
-h1 {
-  @include btn-3;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
 }
