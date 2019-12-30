@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>Demo｜Into the Program</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        var elem = ".contentsItem";
+        var wrap = "body";
+        var lightBox = ".lightBox";
+        var lightBoxBg = ".lightBoxBg";
+
+        $(elem).on("click", function() {
+          var src = $(this)
+            .children("img")
+            .attr("src");
+          var text = $(this)
+            .children("p")
+            .text();
+          $(wrap).append('<div class="lightBoxBg"></div>');
+          $(wrap).append('<div class="lightBox"></div>');
+          $(lightBox).append('<img src="" alt="sample">');
+          $(lightBox).append("<p></p>");
+          $(lightBox)
+            .children("img")
+            .attr("src", src);
+          $(lightBox)
+            .children("p")
+            .text(text);
+          $(lightBoxBg).fadeIn("slow");
+          $(lightBox).fadeIn("slow");
+          $(wrap).css("overflow", "hidden");
+        });
+
+        $(wrap).on("click", lightBoxBg, function() {
+          $(lightBoxBg).fadeOut("slow", function() {
+            $(this).remove();
+          });
+          $(lightBox).fadeOut("slow", function() {
+            $(this).remove();
+          });
+          $(wrap).css("overflow", "auto");
+        });
+      });
+    </script>
+    <style>
+      html,
+      body {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background: #333;
+      }
+
+      img {
+        width: 100%;
+      }
+
+      p {
+        margin: 0;
+        color: #fff;
+        font-size: 20px;
+        text-align: center;
+        font-family: ;
+      }
+
+      .lightBoxBg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: none;
+        min-width: 100%;
+        min-height: 100%;
+        overflow: hidden;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 10;
+      }
+
+      .lightBox {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        display: none;
+        width: 95%;
+        max-width: 1000px;
+        height: auto;
+        box-sizing: border-box;
+        border: 5px solid #000;
+        background: #000;
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+        z-index: 100;
+      }
+
+      .mainContents {
+        width: 100%;
+        height: auto;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 100px 0;
+        clear: both;
+      }
+
+      .contentsItem {
+        width: 96%;
+        height: auto;
+        margin: 0 2% 2% 2%;
+        background: #23527c;
+        cursor: pointer;
+      }
+
+      @media screen and (min-width: 768px) {
+        .contentsItem {
+          width: 24%;
+          height: 200px;
+          margin: 0 1% 1% 0;
+          background: #23527c;
+          float: left;
+          cursor: pointer;
+        }
+
+        .contentsItem:nth-child(4n) {
+          margin: 0 0 1% 0;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header></header>
+    <main class="mainContents">
+      <div class="contentsItem">
+        <img
+          src="//into-the-program.com/demo/images/sample001.jpg"
+          alt="sample"
+        />
+        <p>Item 001</p>
+      </div>
+      <div class="contentsItem">
+        <img
+          src="//into-the-program.com/demo/images/sample002.jpg"
+          alt="sample"
+        />
+        <p>Item 002</p>
+      </div>
+      <div class="contentsItem">
+        <img
+          src="//into-the-program.com/demo/images/sample003.jpg"
+          alt="sample"
+        />
+        <p>Item 003</p>
+      </div>
+      <div class="contentsItem">
+        <img
+          src="//into-the-program.com/demo/images/sample004.jpg"
+          alt="sample"
+        />
+        <p>Item 004</p>
+      </div>
+      <div class="contentsItem">
+        <img
+          src="//into-the-program.com/demo/images/sample005.jpg"
+          alt="sample"
+        />
+        <p>Item 005</p>
+      </div>
+      <div class="contentsItem">
+        <img
+          src="//into-the-program.com/demo/images/sample006.jpg"
+          alt="sample"
+        />
+        <p>Item 006</p>
+      </div>
+      <div class="contentsItem">
+        <img
+          src="//into-the-program.com/demo/images/sample007.jpg"
+          alt="sample"
+        />
+        <p>Item 007</p>
+      </div>
+      <div class="contentsItem">
+        <img
+          src="//into-the-program.com/demo/images/sample008.jpg"
+          alt="sample"
+        />
+        <p>Item 008</p>
+      </div>
+      <div class="contentsItem">
+        <img
+          src="//into-the-program.com/demo/images/sample009.jpg"
+          alt="sample"
+        />
+        <p>Item 009</p>
+      </div>
+      <div class="contentsItem">
+        <img
+          src="//into-the-program.com/demo/images/sample010.jpg"
+          alt="sample"
+        />
+        <p>Item 010</p>
+      </div>
+      <div class="contentsItem">
+        <img
+          src="//into-the-program.com/demo/images/sample011.jpg"
+          alt="sample"
+        />
+        <p>Item 011</p>
+      </div>
+      <div class="contentsItem">
+        <img
+          src="//into-the-program.com/demo/images/sample012.jpg"
+          alt="sample"
+        />
+        <p>Item 012</p>
+      </div>
+    </main>
+  </body>
+</html>

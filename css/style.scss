@@ -1,0 +1,15 @@
+@import "base";
+
+body {
+  @include mq(pcl) {
+    color: black;
+  }
+
+  @include mq(sp) {
+    color: blue;
+  }
+}
+
+h1 {
+  @include btn-3;
+}
