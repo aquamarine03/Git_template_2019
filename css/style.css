@@ -115,19 +115,19 @@ html {
 }
 
 body {
-  color: #bebebe;
+  color: gray;
   font-size: 1.2rem;
   line-height: 2;
   font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
 }
 @media print, screen and (min-width: 768px) {
   body {
-    color: #000;
+    color: gray;
   }
 }
 @media screen and (max-width: 767px) {
   body {
-    color: blue;
+    color: #24bddc;
   }
 }
 
@@ -142,4 +142,24 @@ a:visited,
 a:hover,
 a:active {
   text-decoration: none;
+}
+
+.btn {
+  display: block;
+  width: 60%;
+  height: 10%;
+  color: gray;
+  background: #fff;
+  text-align: center;
+  line-height: 3rem;
+  font-size: 1rem;
+  border: 1px solid gray;
+  border-radius: 1.5rem;
+  transition: 0.5;
+  margin: 10% auto;
+}
+.btn:hover {
+  background: #76d9e8;
+  border: 1px solid #76d9e8;
+  color: #fff;
 }

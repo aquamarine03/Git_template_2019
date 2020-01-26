@@ -1,0 +1,124 @@
+<html>
+  <body>
+    <div id="app" class="container">
+      <h1>
+        <button @click="purge">all Delete</button>
+        Todos
+        <span class="info">({{remaining.length}}/{{todos.length}})</span>
+      </h1>
+
+      <ul>
+        <li v-for="(todo,index) in todos">
+          <input type="checkbox" v-model="todo.isDone" />
+          <!-- v-bind:class(この場合、todo.isDoneがtrueの時にdoneクラスがつく) -->
+          <span v-bind:class="{done: todo.isDone}">{{todo.title}}</span>
+          <span @click="deleteItem(index)" class="command">[X]</span>
+        </li>
+
+        <li v-show="!todos.length">Nothing to do</li>
+
+        <form action="" @submit.prevent="addItem">
+          <input type="text" v-model="newItem" />
+          <input type="submit" value="add" />
+        </form>
+      </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          todos: [],
+          newItem: ""
+        },
+        // deep:trueにしないと、配列の追加削除のみのwatchとなる。
+        watch: {
+          todos: {
+            handler: function() {
+              localStorage.setItem("todos", JSON.stringify(this.todos));
+              alert("data saved");
+            },
+            deep: true
+          }
+        },
+        mounted: function() {
+          this.todos = JSON.parse(localStorage.getItem("todos")) || [];
+        },
+
+        methods: {
+          addItem: function() {
+            let item = { title: this.newItem, isDone: false };
+            this.todos.push(item);
+            this.newItem = "";
+          },
+          deleteItem: function(index) {
+            confirm("OK?");
+            // 配列削除はspliceメソッドで！！
+            this.todos.splice(index, 1);
+          },
+          purge: function() {
+            if (!confirm("are you sure?")) {
+              return;
+            } else {
+              this.todos = this.remaining;
+            }
+          }
+        },
+        // 残タスク数計算
+        computed: {
+          remaining: function() {
+            return this.todos.filter(function(todo) {
+              return !todo.isDone;
+            });
+          }
+        }
+      });
+    </script>
+    <style>
+      body {
+        font-size: 16px;
+        font-family: verdana, sans-serif;
+      }
+
+      .container {
+        width: 300px;
+        margin: auto;
+      }
+
+      #app h1 {
+        font-size: 16px;
+        border-bottom: 1px solid #bebebe;
+        padding: 16px 0px;
+      }
+
+      #app li {
+        line-height: 1.5;
+      }
+
+      #app input[type="text"] {
+        padding: 2px;
+      }
+
+      .command {
+        font-size: 12px;
+        cursor: pointer;
+      }
+
+      #app ul {
+        padding: 0;
+        list-style: none;
+      }
+
+      .done {
+        text-decoration: line-through;
+      }
+
+      .info {
+        color: #bbb;
+        font-size: 12px;
+        font-weight: normal;
+      }
+    </style>
+  </body>
+</html>

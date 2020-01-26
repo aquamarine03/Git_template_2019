@@ -1,0 +1,60 @@
+<html>
+  <body>
+    <div id="app">
+      <p>Total likes:{{total}}</p>
+      <!-- カスタム属性(props) -->
+      <like-component
+        message="LIKE"
+        @increment="incrementTotal"
+      ></like-component>
+      <like-component
+        message="Great"
+        @increment="incrementTotal"
+      ></like-component>
+      <like-component
+        message="Awesome"
+        @increment="incrementTotal"
+      ></like-component>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+      (function() {
+        "use strict";
+
+        var likeComponent = Vue.extend({
+          // < !--カスタム属性(props) -->
+          props: ["message"],
+          data: function() {
+            return {
+              count: 0
+            };
+          },
+          template: '<button @click="countUp">{{message}} {{ count }}</button>',
+          methods: {
+            countUp: function() {
+              this.count++;
+              // イベント発火
+              this.$emit("increment");
+            }
+          }
+        });
+
+        var app = new Vue({
+          el: "#app",
+          data: {
+            total: 0
+          },
+          methods: {
+            incrementTotal: function() {
+              this.total++;
+            }
+          },
+
+          components: {
+            "like-component": likeComponent
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

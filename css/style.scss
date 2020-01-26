@@ -10,15 +10,15 @@ html {
 }
 
 body {
-  color: #bebebe;
+  color: $base-color1;
   font-size: 1.2rem;
   line-height: 2;
   font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
   @include media-pc {
-    color: #000;
+    color: $base-color1;
   }
   @include media-sp {
-    color: blue;
+    color: $main-color1;
   }
 }
 
@@ -33,4 +33,8 @@ a:visited,
 a:hover,
 a:active {
   text-decoration: none;
+}
+
+.btn {
+  @include btn-2;
 }
