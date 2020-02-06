@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- Jqueryの読み込み -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <!-- font awesomeの読み込み -->
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.6.3/js/all.js"
+    ></script>
+
+    <title>Templates</title>
+  </head>
+  <body>
+    <div class="block block1"></div>
+    <div class="block block2"></div>
+    <div class="block3"></div>
+
+    <div class="block_2"></div>
+    <div class="round"></div>
+  </body>
+</html>
+
+<script>
+  (function() {
+    "use strict";
+    $(".block").on("click", function() {
+      $(".block").addClass("moved");
+    });
+  })();
+
+  (function() {
+    "use strict";
+    $(".block_2").on("click", function() {
+      $(".block_2").addClass("moved_2");
+    });
+  })();
+</script>
+
+<style>
+  .round {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    background-color: pink;
+    /* 継続再生 */
+    /* animation: kuru 1s infinite ease-in-out; */
+    /* 一回だけ再生して最後の形のまま */
+    animation: kuru 1s ease-in-out forwards;
+  }
+
+  @keyframes kuru {
+    0% {
+      transform: none;
+    }
+    50% {
+      transform: rotate(270deg) scale(0.8);
+      border-radius: 10%;
+      opacity: 0.8;
+    }
+    80% {
+      transform: rotate(320deg) scale(1.8);
+      border-radius: 100%;
+      opacity: 0.4;
+    }
+    100% {
+      transform: rotate(360deg);
+      transform: translateY(100px);
+    }
+  }
+
+  body {
+    width: 100%;
+    height: 100%;
+  }
+  .block {
+    width: 200px;
+    height: 200px;
+    background-color: #2487ff;
+    transition: 1s;
+    margin-top: 10px;
+  }
+
+  .block1 {
+    background-color: black;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
+  .block2 {
+    background-color: #ff2487;
+    transition-timing-function: cubic-bezier(0, 1.82, 0.84, 1.04);
+  }
+
+  /* .block:hover {
+  transform:rotate(180deg);
+   scale(1.5);
+  //scaleの起点を左上にする時
+  transform-origin:left top;
+  opacity:0.3;
+    }
+ */
+
+  .block_2 {
+    width: 200px;
+    height: 100px;
+    background-color: green;
+  }
+  .moved {
+    transform: translate(400px, 0px);
+  }
+  .moved_2 {
+    animation: spin 2s infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: none;
+    }
+    ,
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+</style>
