@@ -1,12 +1,20 @@
 /*-------------- フォント、カラー ----------------*/
 
 // カラー: ベースカラーはグレー、メインカラーはブルー,
-$base-color1: gray;
-$base-color2: #bebebe;
-$base-color3: #ebebeb;
+$base-color1: #585858;
+$base-color2: #8d8d8e;
+$base-color3: #d0d0d0;
+$base-color4: #f5f6f7;
+
 $main-color1: #24bddc;
 $main-color2: #76d9e8;
 $main-color3: #c7f5f5;
+
+$main2-color1: #ff8887;
+$main2-color2: #e7bba0;
+$main2-color3: #ecceb9;
+$main2-color4: #f0d9c9;
+
 // フォント: jは日本語、eは英語
 $font-j1: "Noto Serif JP", serif;
 $font-e1: "Ubuntu", sans-serif;
