@@ -1,0 +1,47 @@
+@import "base";
+
+/* --------------------------------
+ * base
+ * -------------------------------- */
+// html {
+//   font-size: 62.5%;
+// }
+body {
+  // padding: 30px;
+  // background-color: #f6f7fb;
+  // color: #333;
+  // font-size: 1.2rem;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Lato", sans-serif;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* --------------------------------
+ * items
+ * -------------------------------- */
+.portfolio {
+  letter-spacing: 3px;
+  color: gray;
+  font-family: "Shadows+Into+Light";
+}
+
+h2 {
+  font-family: $font-e3;
+}
+
+.fas,
+.far {
+  font-size: 64px;
+  color: $base-color1;
+}
+/* --------------------------------
+ * header
+ * -------------------------------- */
+/* --------------------------------
+ * footer
+ * -------------------------------- */
